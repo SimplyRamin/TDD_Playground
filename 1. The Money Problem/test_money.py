@@ -1,19 +1,40 @@
 import unittest
 
 
-class Dollar:
-    def __init__(self, amount):
+class Money():
+    def __init__(self, amount, currency):
         self.amount = amount
+        self.currency = currency
 
     def times(self, multiplier):
-        return Dollar(self.amount * multiplier)
+        return Money(self.amount * multiplier, self.currency)
+
+    def divide(self, denominator):
+        if denominator != 0:
+            return Money(self.amount / denominator, self.currency)
+        else:
+            print('Division by Zero')
 
 
 class TestMoney(unittest.TestCase):
-    def testMultiplication(self):
-        fiver = Dollar(5)
-        tenner = fiver.times(2)
-        self.assertEqual(10, tenner.amount)
+    def testMultiplicationInDollars(self):
+        ten_dollars = Money(10, 'USD')
+        twenty_dollars = ten_dollars.times(2)
+        self.assertEqual(20, twenty_dollars.amount)
+        self.assertEqual('USD', twenty_dollars.currency)
+
+    def testMultiplicationInEuros(self):
+        ten_euros = Money(10, 'EUR')
+        twenty_euros = ten_euros.times(2)
+        self.assertEqual(20, twenty_euros.amount)
+        self.assertEqual('EUR', twenty_euros.currency)
+    
+    def testDivideMoney(self):
+        korean_money = Money(4002, 'KRW')
+        korean_money = korean_money.divide(4)
+        expected_money = Money(1000.5, 'KRW')
+        self.assertEqual(korean_money.amount, expected_money.amount)
+        self.assertEqual(korean_money.currency, expected_money.currency)
 
 
 if __name__ == '__main__':
