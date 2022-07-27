@@ -1,5 +1,3 @@
-import functools
-import operator
 from money import Money
 
 
