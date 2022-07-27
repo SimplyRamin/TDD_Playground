@@ -1,36 +1,6 @@
 import unittest
-import functools
-import operator
-
-
-class Money():
-    def __init__(self, amount, currency):
-        self.amount = amount
-        self.currency = currency
-
-    def __eq__(self, other):
-        return self.amount == other.amount and self.currency == other.currency
-
-    def times(self, multiplier):
-        return Money(self.amount * multiplier, self.currency)
-
-    def divide(self, denominator):
-        if denominator != 0:
-            return Money(self.amount / denominator, self.currency)
-        else:
-            print('Division by Zero')
-
-
-class Portfolio():
-    def __init__(self, *moneys):
-        self.moneys = []
-
-    def add(self, *moneys):
-        self.moneys.extend(moneys)
-
-    def evaluate(self, currency):
-        total = functools.reduce(operator.add, map(lambda m: m.amount, self.moneys))
-        return Money(total, currency)
+from portfolio import Portfolio
+from money import Money
 
 
 class TestMoney(unittest.TestCase):
