@@ -4,13 +4,7 @@ from money import Money
 
 
 class TestMoney(unittest.TestCase):
-    def testMultiplicationInDollars(self):
-        ten_dollars = Money(10, 'USD')
-        twenty_dollars = Money(20, 'USD')
-        self.assertEqual(twenty_dollars, ten_dollars.times(2))
-        self.assertEqual('USD', twenty_dollars.currency)
-
-    def testMultiplicationInEuros(self):
+    def testMultiplication(self):
         ten_euros = Money(10, 'EUR')
         twenty_euros = Money(20, 'EUR')
         self.assertEqual(twenty_euros, ten_euros.times(2))
