@@ -19,6 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Test
-        run: python /1. The Money Problem/test_money.py
+        run: python /1.\ The\ Money\ Problem/test_money.py
         shell: bash
       
