@@ -8,7 +8,7 @@ jobs:
     name: Build
     strategy:
       matrix:
-        python-version: [3.x]
+        python-version: [3.9.x, 3.10.x]
         platform: [ubuntu-latest, macos-latest, windows-latest]
     runs-on: ${{matrix.platform}}
     steps:
@@ -19,6 +19,6 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Test
-        run: python test_money.py
+        run: python '\1. The Money Problem\test_money.py'
         shell: bash
       
